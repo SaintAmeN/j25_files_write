@@ -1,6 +1,9 @@
 package com.javagda25.files_example.write;
 
 import java.io.File;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 public class MainFile {
     public static void main(String[] args) {
@@ -11,7 +14,7 @@ public class MainFile {
         // ../ - relatywna sciezka - wskazuje mi na katalog /c/Users/Nazwa_uz/IdeaProjects/
 
         // Temporary
-        // . -
+//         . -
         File plik = new File("plik.txt");
         System.out.println();
         System.out.println(plik.getAbsolutePath());
@@ -30,6 +33,11 @@ public class MainFile {
         System.out.println("Katalog projektu istnieje: " + katalogWKtorymJestesmy.exists());
         System.out.println("Katalog projektu katalogiem: " + katalogWKtorymJestesmy.isDirectory());
 
+        Timestamp timestamp = new Timestamp(katalogWKtorymJestesmy.lastModified());
+        LocalDateTime localDateTime = timestamp.toLocalDateTime();
+//        LocalDateTime localDateTime = LocalDateTime.ofInstant(timestamp.toInstant(), ZoneId.systemDefault());
+
+        System.out.println(localDateTime);
 
     }
 }
